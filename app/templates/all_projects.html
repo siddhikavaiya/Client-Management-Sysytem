@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+    
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">All Projects</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="../../index.html">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">Projects</a>
+                        </li>
+                        <li class="breadcrumb-item active">All Projects</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>All</strong> Projects
+                        </h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                    role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu float-end">
+                                    <li>
+                                        <a href="javascript:void(0);">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Something else here</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-hover js-basic-example contact_list">
+                                <thead>
+                                    <tr>
+                                        <th class="center"> Project Name </th>
+                                        <th class="center"> Client name </th>
+                                        <th class="center"> Company Name </th>
+                                        <th class="center"> Project Status </th>
+                                        <th class="center"> Amount</th>
+                                        <th class="center"> Billing Status </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    {% for i in data %}
+                                    <tr class="odd gradeX">
+                                        <td class="center">{{i.project_name}}</td>
+                                        <td class="center">{{i.client_name.client_name}}</td>
+                                        <td class="center">{{i.client_name.client_company_name}}</td>
+                                        <td class="center">
+                                            
+                                            {% if i.project_status == "Estimate" %}
+                                            <div class="badge col-orange">{{i.project_status}}</div>
+                                            {% elif i.project_status == "Conform" %}
+                                            <div class="badge col-cyan">{{i.project_status}}</div>
+                                            {% elif i.project_status == "Cancel" %}
+                                            <div class="badge col-red">{{i.project_status}}</div>
+                                            {% elif i.project_status == "In progress" %}
+                                            <div class="badge col-deep-orange">{{i.project_status}}</div>
+                                            {% elif i.project_status == "Done" %}
+                                            <div class="badge col-green">{{i.project_status}}</div>
+                                            {% endif %}
+                                                
+                                        </td>
+                                        <td class="center">{{i.project_billing_amount}}</td>
+                                        <td class="center">
+                                            {% if i.bill_status == "Pending" %}
+                                            <div class="badge col-orange">{{i.bill_status}}</div>
+                                            {% elif i.bill_status == "Done" %}
+                                            <div class="badge col-green">{{i.bill_status}}</div>
+                                            {% endif %}
+                                        </td>
+                                        
+                                      
+                                    </tr>
+                                    {% endfor %}
+                                        
+                                    
+                                   
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th class="center"> Project Name </th>
+                                        <th class="center"> Client name </th>
+                                        <th class="center"> Company Name </th>
+                                        <th class="center"> Project Status </th>
+                                        <th class="center"> Amount</th>
+                                        <th class="center"> Billing Status </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}
+    

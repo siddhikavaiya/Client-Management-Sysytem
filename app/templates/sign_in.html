@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from www.einfosoft.com/templates/admin/atrio/source/lighthr/pages/examples/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Jan 2022 10:41:18 GMT -->
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<title>PCMS</title>
+	<!-- Favicon-->
+	<link rel="icon" href="{% static 'assets/images/favicon.ico' %}" type="image/x-icon">
+	<!-- Plugins Core Css -->
+	<link href="{% static 'assets/css/app.min.css' %}" rel="stylesheet">
+	<!-- Custom Css -->
+	<link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+	<link href="{% static 'assets/css/pages/extra_pages.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" method="POST">
+					{% csrf_token %}
+					<span class="login100-form-title p-b-45">
+						Login
+					</span>
+					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" placeholder="Email">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" name="password" placeholder="Password">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="flex-sb-m w-full p-t-15 p-b-20">
+						
+						
+						<div>
+							<a href="#" class="txt1">
+								Forgot Password?
+							</a>
+						</div>
+					</div>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" type="submit">
+							Login
+						</button>
+					</div>
+					
+					
+				</form>
+				<div class="login100-more" style="background-image: url('{% static "assets/images/pages/bg-01.png" %}');">
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	{% if messages %}
+{% for msg in messages %}
+<script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: '{{msg.tags}}',
+        title: '{{msg}}'
+    })
+</script>
+{% endfor %}
+{% endif %}
+
+	<!-- Plugins Js -->
+	<script src="{% static 'assets/js/app.min.js' %}"></script>
+	<!-- Extra page Js -->
+	<script src="{% static 'assets/js/pages/examples/pages.js' %}"></script>
+</body>
+
+
+<!-- Mirrored from www.einfosoft.com/templates/admin/atrio/source/lighthr/pages/examples/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Jan 2022 10:41:18 GMT -->
+</html>
