@@ -154,3 +154,7 @@ def allproject(request):
 def allpayment(request):
     data = Payment.objects.all()
     return render(request,'allpayment.html',{'data':data})
+
+def addexpense(request):
+    fm = ExpenseForm()
+    return render(request,'add_expense.html',{'fm':fm})

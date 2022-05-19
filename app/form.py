@@ -1,3 +1,4 @@
+from tkinter import Widget
 from django import forms
 from .models import *
 
@@ -42,3 +43,17 @@ class DesignForm(forms.ModelForm):
             'drawing4' : forms.FileInput(attrs={'class':'form-control','placeholder':'Payment Mode'}),
             'drawing5' : forms.FileInput(attrs={'class':'form-control','placeholder':'Payment Mode'}),
         }
+
+class ExpenseForm(forms.ModelForm):
+    class Meta:
+        model = Expense
+        fields = "__all__"
+
+        # Widgets = {
+        #     'project_name' : forms.Select(attrs={'class':'form-control'}),
+        #     'to_whom' : forms.TextInput(attrs={'class':'form-control'}),
+        #     'amount' : forms.NumberInput(attrs={'class':'form-control'}),
+        #     'product' : forms.TextInput(attrs={'class':'form-control'}),
+        #     'date' : forms.DateInput(attrs={'class':'form-control'}),
+        #     'payment_status' : forms.Select(attrs={'class':'form-control'}),
+        # }

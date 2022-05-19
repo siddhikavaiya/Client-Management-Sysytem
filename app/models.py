@@ -54,5 +54,14 @@ class Payment(models.Model):
     note = models.CharField(max_length=5000)
     pay_image = models.ImageField(upload_to = 'Pay receipt')
     payment_mode = models.CharField(choices=mode,max_length=200)
+
+status = (('Pending','Pending'),('Done','Done'))
+class Expense(models.Model):
+    project_name = models.ForeignKey(Project,on_delete=models.CASCADE)
+    to_whom = models.CharField(max_length=1000)
+    amount = models.IntegerField()
+    product = models.CharField(max_length=500)
+    date = models.DateField()
+    payment_status = models.CharField(choices=status,max_length=20,default='Pending')
     
 
