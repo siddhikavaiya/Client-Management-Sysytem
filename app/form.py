@@ -5,7 +5,7 @@ from .models import *
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = "__all__"
+        exclude = ('user',)
 
         widgets = {
             'project_name' : forms.TextInput(attrs={'class':'form-control','placeholder':'Project Name'}),
@@ -19,7 +19,7 @@ class ProjectForm(forms.ModelForm):
 class PaymentForm(forms.ModelForm):
     class Meta:
         model = Payment
-        fields = "__all__"
+        exclude = ('user',)
 
         widgets = {
             'project_name' : forms.Select(attrs={'class':'form-control','placeholder':'Project Name'}),
@@ -32,7 +32,7 @@ class PaymentForm(forms.ModelForm):
 class DesignForm(forms.ModelForm):
     class Meta:
         model = Drawings
-        fields = "__all__"
+        exclude = ('user',)
 
         widgets = {
             'project_name' : forms.Select(attrs={'class':'form-control','placeholder':'Project Name'}),
@@ -47,13 +47,13 @@ class DesignForm(forms.ModelForm):
 class ExpenseForm(forms.ModelForm):
     class Meta:
         model = Expense
-        fields = "__all__"
+        exclude = ('user',)
 
-        # Widgets = {
-        #     'project_name' : forms.Select(attrs={'class':'form-control'}),
-        #     'to_whom' : forms.TextInput(attrs={'class':'form-control'}),
-        #     'amount' : forms.NumberInput(attrs={'class':'form-control'}),
-        #     'product' : forms.TextInput(attrs={'class':'form-control'}),
-        #     'date' : forms.DateInput(attrs={'class':'form-control'}),
-        #     'payment_status' : forms.Select(attrs={'class':'form-control'}),
-        # }
+        widgets = {
+            'project_name' : forms.Select(attrs={'class':'form-control'}),
+            'to_whom' : forms.TextInput(attrs={'class':'form-control'}),
+            'amount' : forms.NumberInput(attrs={'class':'form-control'}),
+            'product' : forms.TextInput(attrs={'class':'form-control',}),
+            'date' : forms.DateInput(attrs={'class':'flatPicker','id':'myDatePicker','placeholder':'Please choose a date...'}),
+            'payment_status' : forms.Select(attrs={'class':'form-control'}),
+        }

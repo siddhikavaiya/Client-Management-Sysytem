@@ -11,6 +11,7 @@ class Register(models.Model):
 
 
 class Client(models.Model):
+    user = models.ForeignKey(Register,on_delete=models.CASCADE)
     client_name = models.CharField(max_length=500)
     client_company_name = models.CharField(max_length=500,blank=True)
     client_email = models.EmailField()
@@ -28,6 +29,7 @@ class Client(models.Model):
 pro_status = (("Estimate","Estimate"),("Conform","Conform"),("Cancel","Cancel"),("In progress","In progress"),("Done","Done"))
 billstatus = (('Pending','Pending'),('Done','Done'))
 class Project(models.Model):
+    user = models.ForeignKey(Register,on_delete=models.CASCADE)
     project_name = models.CharField(max_length=5000)
     client_name = models.ForeignKey(Client,on_delete=models.CASCADE)
     project_status = models.CharField(choices=pro_status,max_length=100,default="Estimate")
@@ -39,6 +41,7 @@ class Project(models.Model):
         return self.project_name
     
 class Drawings(models.Model):
+    user = models.ForeignKey(Register,on_delete=models.CASCADE)
     project_name = models.ForeignKey(Project,on_delete=models.CASCADE)
     drawing  = models.FileField(upload_to='drawings')
     drawing1  = models.FileField(upload_to='drawings',null=True,blank=True)
@@ -49,6 +52,7 @@ class Drawings(models.Model):
 
 mode = (("Cash","Cash"),("Cheque","Cheque"),("Online transfer","Online transfer"))
 class Payment(models.Model):
+    user = models.ForeignKey(Register,on_delete=models.CASCADE)
     project_name = models.ForeignKey(Project,on_delete=models.CASCADE)
     amount = models.BigIntegerField()
     note = models.CharField(max_length=5000)
@@ -57,6 +61,7 @@ class Payment(models.Model):
 
 status = (('Pending','Pending'),('Done','Done'))
 class Expense(models.Model):
+    user = models.ForeignKey(Register,on_delete=models.CASCADE)
     project_name = models.ForeignKey(Project,on_delete=models.CASCADE)
     to_whom = models.CharField(max_length=1000)
     amount = models.IntegerField()

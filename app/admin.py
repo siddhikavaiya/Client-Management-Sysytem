@@ -20,3 +20,7 @@ class DrawingsAdmin(admin.ModelAdmin):
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
     list_display = ("payment_mode", "pay_image", "note", "amount","project_name")[::-1]
+
+@admin.register(Expense)
+class ExpenseAdmin(admin.ModelAdmin):
+    list_display = ("payment_status", "date", "product", "amount", "to_whom", "project_name")

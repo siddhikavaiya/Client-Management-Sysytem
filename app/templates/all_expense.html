@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+    
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Expense</h4>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Payment</strong> Pending
+                        </h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                    role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu float-end">
+                                    <li>
+                                        <a href="javascript:void(0);">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Something else here</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-hover js-basic-example contact_list">
+                                <thead>
+                                    <tr>
+                                        <th class="center"> Project Name </th>
+                                        <th class="center"> To </th>
+                                        <th class="center"> Material </th>
+                                        <th class="center"> Date </th>
+                                        <th class="center"> Amount</th>
+                                        <th class="center"> Billing Status </th>
+                                        <th class="center"> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    {% for i in data %}
+                                    
+                                    {% if i.payment_status == "Pending" %}
+                                    <tr class="odd gradeX">
+                                        <td class="center">{{i.project_name}}</td>
+                                        <td class="center">{{i.to_whom}}</td>
+                                        <td class="center">{{i.product}}</td>
+                                        <td class="center">{{i.date}}</td>
+                                        <td class="center">{{i.amount}}</td>
+                                       
+                                        
+                                        <td class="center">
+                                            {% if i.payment_status == "Pending" %}
+                                            <div class="badge col-orange">{{i.payment_status}}</div>
+                                            {% elif i.payment_status == "Done" %}
+                                            <div class="badge col-green">{{i.payment_status}}</div>
+                                            {% endif %}
+                                        </td>
+                                        <td class="center">
+                                            <a href="{% url 'editexpense' i.id %}" class="btn btn-tbl-edit">
+                                                <i class="material-icons">create</i>
+                                            </a>
+                                            <a href="{% url 'deleteexpense' i.id %}" class="btn btn-tbl-delete">
+                                                <i class="material-icons">delete_forever</i>
+                                            </a>
+                                        </td>
+                                        
+                                      
+                                    </tr>
+                                    {% endif %}
+                                        
+                                    
+                                    {% endfor %}
+                                        
+                                    
+                                   
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Payment</strong> Done
+                        </h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                    role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu float-end">
+                                    <li>
+                                        <a href="javascript:void(0);">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Something else here</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-hover js-basic-example contact_list">
+                                <thead>
+                                    <tr>
+                                        <th class="center"> Project Name </th>
+                                        <th class="center"> To </th>
+                                        <th class="center"> Material </th>
+                                        <th class="center"> Date </th>
+                                        <th class="center"> Amount</th>
+                                        <th class="center"> Billing Status </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    {% for i in data %}
+                                    
+                                    {% if i.payment_status == "Done" %}
+                                    <tr class="odd gradeX">
+                                        <td class="center">{{i.project_name}}</td>
+                                        <td class="center">{{i.to_whom}}</td>
+                                        <td class="center">{{i.product}}</td>
+                                        <td class="center">{{i.date}}</td>
+                                        <td class="center">{{i.amount}}</td>
+                                       
+                                        
+                                        <td class="center">
+                                            {% if i.payment_status == "Pending" %}
+                                            <div class="badge col-orange">{{i.payment_status}}</div>
+                                            {% elif i.payment_status == "Done" %}
+                                            <div class="badge col-green">{{i.payment_status}}</div>
+                                            {% endif %}
+                                        </td>
+                                        
+                                        
+                                      
+                                    </tr>
+                                    {% endif %}
+                                        
+                                    
+                                    {% endfor %}
+                                        
+                                    
+                                   
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}
+    

@@ -13,7 +13,7 @@
                             <h4 class="page-title">All Clients</h4>
                         </li>
                         <li class="breadcrumb-item bcrumb-1">
-                            <a href="{% url 'index' %}">
+                            <a href="../../index.html">
                                 <i class="fas fa-home"></i> Home</a>
                         </li>
                         <li class="breadcrumb-item bcrumb-2">
@@ -67,7 +67,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
                                     {% for i in data %}
                                     <tr class="odd gradeX">
                                         <td class="table-img center">
@@ -87,12 +86,11 @@
                                     </tr>
                                     {% endfor %}
                                         
-                                  
-                                   
                                 </tbody>
-                                <tfoot>
+                                <!-- <tfoot>
                                     <tr>
                                         <th class="center">#</th>
+                                        <th class="center"> Client ID </th>
                                         <th class="center"> Name </th>
                                         <th class="center"> Organization </th>
                                         <th class="center"> Mobile </th>
@@ -100,7 +98,7 @@
                                         <th class="center"> Address </th>
                                         <th class="center"> Action </th>
                                     </tr>
-                                </tfoot>
+                                </tfoot> -->
                             </table>
                         </div>
                     </div>
